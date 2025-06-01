@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  data:
+    redis:
+      host: localhost
+      port: 6587
+      password:
+      database: 0
+      lettuce:
+        pool:
+          max-active: 10
+          min-idle: 3
+          max-idle: 6
+
+logging:
+  level:
+    com.hexadecimal: debug

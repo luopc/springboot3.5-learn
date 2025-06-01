@@ -1,0 +1,18 @@
+server:
+  port: 8082
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  application:
+    name: redis
+    version: '@project.version@'
+  profiles:
+    active: '@profiles.active@'
+    include: redis
+
+# Logger Config
+logging:
+  level:
+    com.hexadecimal: debug

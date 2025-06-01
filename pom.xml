@@ -12,6 +12,8 @@
     <modules>
         <module>01_java-base</module>
         <module>02_common-api</module>
+        <module>03_project-seed</module>
+        <module>04_spring-boot-redis</module>
     </modules>
     <packaging>pom</packaging>
 

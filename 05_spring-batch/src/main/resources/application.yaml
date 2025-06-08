@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+batch:
+  inputFile: coffee-list.csv
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test-db;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  sql:
+    init:
+      platform: h2
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  batch:
+    jdbc:
+      initialize-schema: always
+#      schema: classpath:/org/springframework/batch/core/schema-h2.sql
+      platform: h2
+    job:
+      enabled: false
+
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      #app-version: '@project.version@'
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+# Logger Config
+logging:
+  level:
+    com.hexadecimal: debug

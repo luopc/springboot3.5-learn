@@ -9,6 +9,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -102,6 +103,9 @@ public class RedisApplicationTest {
                 .andExpect(MockMvcResultMatchers.status().isOk()) //断言返回状态码为200
                 .andDo(MockMvcResultHandlers.print()) //在控制台打印日志
                 .andReturn(); //返回请求结果
+        MockHttpServletResponse response = mvcResult.getResponse();
+//        log.info("content={}", response.getContentAsString());
+//        RestResult restResult = JsonUtil.decode(response.getContentAsString(), RestResult.class);
 //        log.info("mvc result = {}", mvcResult.getResponse().getContentAsString());
     }
 

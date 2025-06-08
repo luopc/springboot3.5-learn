@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(String id) {
         String userKey = "user:key:" + id;
+
         return (User) redisUtils.get(userKey);
     }
 }

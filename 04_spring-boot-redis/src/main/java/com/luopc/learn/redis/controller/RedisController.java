@@ -5,6 +5,7 @@ import com.luopc.learn.redis.service.UserService;
 import com.luopc.learn.utils.SequentialIDUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,10 @@ public class RedisController {
     }
 
     @GetMapping("getUser")
-    public User getUser(@RequestParam("id") String id) {
+    public ResponseEntity<User> getUser(@RequestParam("id") String id) {
         log.info("getUser id:{}",id);
         User user = userService.getUser(id);
         log.info("getUser user:{}",user);
-        return user;
+        return ResponseEntity.ok(user);
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -20,9 +19,9 @@ public class FirstJobDemo {
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    @Bean
-    public Job firstJob() {
-        return new JobBuilder("firstJob", jobRepository)
+
+    public Job simpleJob() {
+        return new JobBuilder("simpleJob", jobRepository)
                 .start(step())
                 .build();
     }
@@ -35,7 +34,6 @@ public class FirstJobDemo {
                 }, transactionManager).build();
     }
 
-    @Bean
     public Job multiStepJob() {
         return new JobBuilder("multiStepJob2", jobRepository)
                 .start(step1())

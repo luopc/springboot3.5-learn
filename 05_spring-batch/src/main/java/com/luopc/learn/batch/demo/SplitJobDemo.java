@@ -23,7 +23,6 @@ public class SplitJobDemo {
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    @Bean
     public Job splitJob() {
         return new JobBuilder("splitJob", jobRepository)
                 .start(flow1())

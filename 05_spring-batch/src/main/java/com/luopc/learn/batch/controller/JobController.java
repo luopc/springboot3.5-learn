@@ -1,6 +1,8 @@
 package com.luopc.learn.batch.controller;
 
+import com.luopc.learn.batch.demo.DeciderJobDemo;
 import com.luopc.learn.batch.demo.FirstJobDemo;
+import com.luopc.learn.batch.demo.NestedJobDemo;
 import com.luopc.learn.batch.demo.SplitJobDemo;
 import org.hibernate.id.IdentityGenerator;
 import org.springframework.batch.core.Job;
@@ -29,6 +31,10 @@ public class JobController {
     private FirstJobDemo firstJobDemo;
     @Autowired
     private SplitJobDemo splitJobDemo;
+    @Autowired
+    private DeciderJobDemo deciderJobDemo;
+    @Autowired
+    private NestedJobDemo nestedJobDemo;
     /**
      * 通过bean的方式创建Job对象，并通过JobLauncher启动作业
      */
@@ -49,6 +55,12 @@ public class JobController {
         return "批处理作业已启动";
     }
 
+    @GetMapping("/start-decider-job")
+    public String startDeciderJob() throws Exception {
+        jobLauncher.run(deciderJobDemo.deciderJob(), new JobParameters());
+        return "批处理作业已启动";
+    }
+
     @GetMapping("/start-multi-job")
     public String startMultiJob() throws Exception {
         jobLauncher.run(firstJobDemo.multiStepJob(), new JobParameters());
@@ -58,6 +70,12 @@ public class JobController {
     @GetMapping("/start-split-job")
     public String startSplitJob() throws Exception {
         jobLauncher.run(splitJobDemo.splitJob(), new JobParameters());
+        return "批处理作业已启动";
+    }
+
+    @GetMapping("/start-nested-job")
+    public String startNestedJob() throws Exception {
+        jobLauncher.run(nestedJobDemo.parentJob(), new JobParameters());
         return "批处理作业已启动";
     }
 

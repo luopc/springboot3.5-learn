@@ -15,6 +15,10 @@
         <module>03_project-seed</module>
         <module>04_spring-boot-redis</module>
         <module>05_spring-batch</module>
+        <module>06_spring-ai-chat_01</module>
+        <module>09_spring-ai-image</module>
+        <module>08_spring-ai-graph</module>
+        <module>07_spring-ai-audio</module>
     </modules>
     <packaging>pom</packaging>
 
